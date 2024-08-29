@@ -4,7 +4,7 @@ const { Client } = require('pg');
 const cors = require('cors');
 
 const app = express();
-const port = 8000;
+const port = process.env.PORT || 8080;
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -30,7 +30,7 @@ app.get('/messages', (req, res) => {
   client.query(sql)
     .then(result => res.send(result.rows))
     .catch(err => {
-      console.error(err);
+      console.error('Error fetching messages:', err);
       res.status(500).send('Error fetching messages');
     });
 });
@@ -42,7 +42,7 @@ app.post('/replies', (req, res) => {
   client.query(sql, [sender, text, receiver])
     .then(() => res.send('Message saved'))
     .catch(err => {
-      console.error(err);
+      console.error('Error saving message:', err);
       res.status(500).send('Error saving message');
     });
 });
