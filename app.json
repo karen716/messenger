@@ -1,0 +1,21 @@
+{
+  "expo": {
+    "name": "blank",
+    "slug": "blank",
+    "version": "1.0.0",
+    "sdkVersion": "51.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "android": {
+      "package": "com.karen718.blank"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "b33d8c1c-59d1-4fc3-b4d7-22ee173cd44f"
+      }
+    }
+  }
+}
