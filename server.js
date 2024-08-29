@@ -21,6 +21,10 @@ client.connect()
   .then(() => console.log('PostgreSQL connected...'))
   .catch(err => console.error('Connection error', err.stack));
 
+app.get('/', (req, res) => {
+  res.json({ message: "Welcome to Messenger App" });
+});
+
 app.get('/messages', (req, res) => {
   const sql = 'SELECT * FROM chats';
   client.query(sql)
