@@ -5,6 +5,9 @@ const cors = require('cors');
 
 const app = express();
 const port = process.env.PORT || 8080;
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
+});
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -47,6 +50,4 @@ app.post('/replies', (req, res) => {
     });
 });
 
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
-});
+
