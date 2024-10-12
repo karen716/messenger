@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 
 // PostgreSQL client setup
 const client = new Client({
-  connectionString: 'postgresql://mesenger_user:uazZFXAclDrRmmVrMkMhPSPC9c37VzYY@dpg-cr82gdrtq21c739ikcp0-a.oregon-postgres.render.com/mesenger',
+  connectionString: 'postgresql://mesenger_j65l_user:ibFPErFsSVUrlkFpSlvX8z2YnzwlJCdq@dpg-cs53kj08fa8c73af5ba0-a:5432/mesenger_j65l',
   ssl: {
     rejectUnauthorized: false
   }
@@ -38,16 +38,5 @@ app.get('/messages', (req, res) => {
     });
 });
 
-app.post('/replies', (req, res) => {
-  console.log('Request received:', req.body); // Debug log
-  const { sender, receiver, text } = req.body;
-  const sql = 'INSERT INTO replies (senders, message, receivers) VALUES ($1, $2, $3)';
-  client.query(sql, [sender, text, receiver])
-    .then(() => res.send('Message saved'))
-    .catch(err => {
-      console.error('Error saving message:', err);
-      res.status(500).send('Error saving message');
-    });
-});
 
 
